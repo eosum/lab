@@ -10,10 +10,11 @@ public class RemoveById implements Command {
         this.collectionManager = collectionManager;
     }
 
+    @Override
     public void execute(String args[]) {
         try {
             final Long id = Long.parseLong(args[0]);
-            if (!this.collectionManager.remove_by_id(id)) {
+            if (!this.collectionManager.removeById(id)) {
                 System.out.println("Объекта с id = " + id + " не найдено");
             }
         }

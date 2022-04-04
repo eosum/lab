@@ -5,7 +5,7 @@ import Data.Coordinates;
 
 import java.time.ZonedDateTime;
 
-public class HumanBeing {
+public class HumanBeing implements Comparable<HumanBeing>{
     private Long id; // поле не может быть null, значение генерируется автоматически, уникально, > 0
     private String name; // поле не может быть 0, строка не пустая
     private Coordinates coordinates; // поле не может быть null
@@ -25,7 +25,7 @@ public class HumanBeing {
         this.coordinates = coordinates;
         this.realHero = realHero;
         this.hasToothpick = hasToothpick;
-        this.impactSpeed= impactSpeed;
+        this.impactSpeed = impactSpeed;
         this.soundtrackName = soundtrackName;
         this.minutesOfWaiting = minutesOfWaiting;
         this.weaponType = weaponType;
@@ -40,6 +40,10 @@ public class HumanBeing {
 
     public String getSoundtrackName() {
         return soundtrackName;
+    }
+
+    public String getWeaponType() {
+        return weaponType.toString();
     }
 
     @Override
@@ -57,4 +61,10 @@ public class HumanBeing {
                 + "creationDate = " + creationDate;
     }
 
+    @Override
+    public int compareTo(HumanBeing o) {
+        if (this.impactSpeed == o.impactSpeed) return 0;
+        if (this.impactSpeed < o.impactSpeed) return -1;
+        return 1;
+    }
 }

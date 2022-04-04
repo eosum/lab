@@ -6,109 +6,154 @@ import java.util.Scanner;
 
 public class ElementInput {
 
-    public static String nameInput() {
+    private String name;
+    private String soundtrack;
+    private String car;
+    private WeaponType weaponType;
+    private Float x;
+    private Float y;
+    private Boolean isHero;
+    private Boolean hasToothpick;
+    private Long impactSpeed;
+    private Integer minutesOfWaiting;
+
+    public void nameInput() {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите имя: ");
-            String name = input.nextLine();
-            if (name.trim().length() > 0) return name;
+            name = input.nextLine();
+            if (name.trim().length() > 0) break;
             System.out.println("Неправильный ввод. Строка должна быть не пустой!");
         }
     }
 
-    public static Float xInput() {
+    public void xInput() {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите координату x: ");
             if (input.hasNextFloat()) {
-                Float x = input.nextFloat();
-                if (Coordinates.checkValidX(x)) return x;
+                x = input.nextFloat();
+                if (Coordinates.checkValidX(x)) break;
             }
             System.out.println("Неверный формат ввода или число превышает " + Coordinates.getMaxX());
         }
     }
 
-    public static Float yInput() {
+    public void yInput() {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите координату y: ");
             if (input.hasNextFloat()) {
-                Float y = input.nextFloat();
-                if (Coordinates.checkValidY(y)) return y;
+                y = input.nextFloat();
+                if (Coordinates.checkValidY(y)) break;
             }
             System.out.println("Неверный формат ввода или число превышает " + Coordinates.getMaxY());
         }
     }
 
-    public static Boolean isHeroInput() {
+    public void isHeroInput() {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Является героем: ");
-            if (input.hasNextBoolean()) return input.nextBoolean();
+            if (input.hasNextBoolean()) {
+                isHero = input.nextBoolean();
+                break;
+            }
             System.out.println("Введите либо true либо false!");
         }
     }
 
-    public static Boolean hasToothpickInput() {
+    public void hasToothpickInput() {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Есть зубочистка: ");
-            if (input.hasNextBoolean()) return input.nextBoolean();
+            if (input.hasNextBoolean()) {
+                hasToothpick = input.nextBoolean();
+                break;
+            }
             System.out.println("Введите либо true либо false!");
         }
     }
 
-    public static Long impactSpeedInput() {
+    public void impactSpeedInput() {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите скорость: ");
-            if (input.hasNextLong()) return input.nextLong();
-
+            if (input.hasNextLong()) {
+                impactSpeed = input.nextLong();
+                break;
+            }
             System.out.println("Введите целое число!");
         }
     }
 
-    public static String soundtrackInput() {
+    public void soundtrackInput() {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите имя саундтрека: ");
-            String soundtrack = input.nextLine();
-            if (soundtrack.trim().length() > 0) return soundtrack;
+            soundtrack = input.nextLine();
+            if (soundtrack.trim().length() > 0) break;
 
             System.out.println("Неправильный ввод. Строка должна быть не пустой!");
         }
     }
 
-    public static Integer minutesOfWaitingInput() {
+    public void minutesOfWaitingInput() {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите время ожидания: ");
-            if (input.hasNextInt()) return input.nextInt();
+            if (input.hasNextInt()) {
+                minutesOfWaiting = input.nextInt();
+                break;
+            }
 
             System.out.println("Введите число!");
         }
     }
 
-    public static WeaponType weaponTypeInput() {
+    public void weaponTypeInput() {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите тип оружия. Возможные варианты - ");
             WeaponType.outputWeaponType();
             try {
-                return WeaponType.valueOf(input.nextLine());
+                weaponType = WeaponType.valueOf(input.nextLine());
             } catch (Exception e) {
                 System.out.println("Введите слово из предложенного списка!");
             }
         }
     }
 
-    public static String carInput() {
+    public void carInput() {
         while(true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите марку машины: ");
-            if (input.hasNextLine()) return input.nextLine();
-
+            if (input.hasNextLine()) {
+                car = input.nextLine();
+                break;
+            }
             System.out.println("Ошибка!");
         }
     }
+
+    public HumanBeing createElement(Long id) {
+        return new HumanBeing(id, name, new Coordinates(x, y), isHero, hasToothpick, impactSpeed,
+                soundtrack, minutesOfWaiting, weaponType, new Car(car));
+    }
+
+    public HumanBeing resultElement(Long id) {
+        nameInput();
+        xInput();
+        yInput();
+        isHeroInput();
+        hasToothpickInput();
+        impactSpeedInput();
+        minutesOfWaitingInput();
+        soundtrackInput();
+        weaponTypeInput();
+        carInput();
+
+        return createElement(id);
+    }
+
 }

@@ -9,13 +9,10 @@ public class FilterStartsWithSoundtrackName implements Command{
         this.collectionManager = collectionManager;
     }
 
+    @Override
     public void execute(String args[]) {
-        if(args.length == 0) {
-            System.out.println("Подстрока не может быть пустой!");
-        } else {
-            String SubString = String.join(" ", args);
-            collectionManager.filter_starts_with_soundtrack_name(SubString);
-        }
+        String SubString = String.join(" ", args);
+        collectionManager.filterStartsWithSoundtrackName(SubString);
     }
 
 }

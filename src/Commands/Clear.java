@@ -10,6 +10,7 @@ public class Clear implements Command {
         this.collectionManager = collectionManager;
     }
 
+    @Override
     public void execute(String args[]) {
         collectionManager.clear();
     }

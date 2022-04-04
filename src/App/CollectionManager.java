@@ -2,19 +2,39 @@ package App;
 
 import Data.HumanBeing;
 
+import java.time.ZonedDateTime;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class CollectionManager {
-    static LinkedList<HumanBeing> collection = new LinkedList<>();
+    LinkedList<HumanBeing> collection = new LinkedList<>();
     private Long id = 1L;
+    ZonedDateTime initTime = ZonedDateTime.now();
 
     public void info() {
         System.out.println("Тип - " + collection.getClass() + "\n"
-                            + "Дата инициализации - НЕ ЗАБУДЬ СДЕЛАТЬ" + "\n"
+                            + "Дата инициализации - " + initTime + "\n"
                             + "Количество элементов - " + collection.size());
     }
 
-    public void filter_starts_with_soundtrack_name(String SubString) {
+    public void save_xml() {
+       // return collection;
+    }
+
+    public void removeGreater(HumanBeing CompareElement) {
+        for (HumanBeing element: collection) {
+            if (element.compareTo(CompareElement) == 1) {
+                collection.remove(element);
+            }
+        }
+    }
+
+    public void addIfMin(HumanBeing Element) {
+        Collections.sort(collection);
+        if (collection.peekFirst().compareTo(Element) >= 0) collection.addFirst(Element);
+    }
+
+    public void filterStartsWithSoundtrackName(String SubString) {
         for (HumanBeing element: collection) {
             String NameSoundtrack = element.getSoundtrackName();
             if (NameSoundtrack.startsWith(SubString)) {
@@ -23,11 +43,24 @@ public class CollectionManager {
         }
     }
 
-    public void print_ascending() {
-
+    public void countLessThanWeaponType(String weaponType) {
+        int amount = 0;
+        for(HumanBeing element: collection) {
+            if (element.getWeaponType().length() < weaponType.length()) {
+                amount++;
+            }
+        }
+        System.out.println(amount);
     }
 
-    public void remove_first() {
+    public void printAscending() {
+        Collections.sort(collection);
+        for (HumanBeing element: collection) {
+            System.out.println(element + "\n");
+        }
+    }
+
+    public void removeFirst() {
         collection.removeFirst();
     }
 
@@ -47,7 +80,7 @@ public class CollectionManager {
         collection.add(element);
     }
 
-    public boolean update_by_id(Long updateId) {
+    public boolean updateById(Long updateId) {
         for(HumanBeing element: collection) {
             if (element.getId() == updateId) {
                 collection.remove(element);
@@ -57,7 +90,7 @@ public class CollectionManager {
         return false;
     }
 
-    public boolean remove_by_id(Long deleteId) {
+    public boolean removeById(Long deleteId) {
         for(HumanBeing element: collection) {
             if (element.getId() == deleteId) {
                 collection.remove(element);

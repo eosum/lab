@@ -9,8 +9,9 @@ public class PrintAscending implements Command {
         this.collectionManager = collectionManager;
     }
 
+    @Override
     public void execute(String args[]) {
-        collectionManager.print_ascending();
+        collectionManager.printAscending();
     }
 
     @Override

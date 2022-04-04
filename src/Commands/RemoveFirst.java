@@ -9,8 +9,9 @@ public class RemoveFirst implements Command {
         this.collectionManager = collectionManager;
     }
 
+    @Override
     public void execute(String args[]) {
-        collectionManager.remove_first();
+        collectionManager.removeFirst();
     }
 
     @Override
