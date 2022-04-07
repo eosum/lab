@@ -13,12 +13,8 @@ public class CollectionManager {
 
     public void info() {
         System.out.println("Тип - " + collection.getClass() + "\n"
-                            + "Дата инициализации - " + initTime + "\n"
-                            + "Количество элементов - " + collection.size());
-    }
-
-    public void save_xml() {
-       // return collection;
+                            + "Количество элементов - " + collection.size() + "\n"
+                            + "Дата инициализации - " + initTime);
     }
 
     public void removeGreater(HumanBeing CompareElement) {

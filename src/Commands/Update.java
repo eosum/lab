@@ -26,6 +26,6 @@ public class Update implements Command {
 
     @Override
     public String toString() {
-        return "Commands.Update - обновить значение элемента коллекции, id которого совпадает с исходным";
+        return "update - обновить значение элемента коллекции, id которого совпадает с исходным";
     }
 }

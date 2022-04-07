@@ -17,6 +17,6 @@ public class Info implements Command {
 
     @Override
     public String toString() {
-        return " Commands.Info - выводит информацию о коллекции (тип, дата инициализации и тд)";
+        return "info - выводит информацию о коллекции (тип, дата инициализации и тд)";
     }
 }

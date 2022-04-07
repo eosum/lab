@@ -118,6 +118,7 @@ public class ElementInput {
             WeaponType.outputWeaponType();
             try {
                 weaponType = WeaponType.valueOf(input.nextLine());
+                break;
             } catch (Exception e) {
                 System.out.println("Введите слово из предложенного списка!");
             }

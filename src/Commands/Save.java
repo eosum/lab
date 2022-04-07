@@ -44,6 +44,6 @@ public class Save implements Command {
 
     @Override
     public String toString() {
-        return "Commands.Save - сохраняет коллекцию в файл";
+        return "save - сохраняет коллекцию в файл";
     }
 }

@@ -1,18 +1,23 @@
 package Commands;
 
-import App.*;
+import java.util.HashMap;
 
 public class Help implements Command {
+    private final HashMap<String, Command> commands;
+
+    public Help(HashMap<String, Command> commands) {
+        this.commands = commands;
+    }
 
     @Override
     public void execute(String args[]) {
-        for (Command value: CommandsList.commands.values()) {
-            System.out.println(value.toString());
+        for (Command description: commands.values()) {
+            System.out.println(description.toString());
         }
     }
 
     @Override
     public String toString() {
-        return "Commands.Help - выводит справку по доступным командам";
+        return "help - выводит справку по доступным командам";
     }
 }

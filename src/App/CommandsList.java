@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 
 public class CommandsList {
-    public static final HashMap<String, Command> commands = new HashMap<>();
+    public final HashMap<String, Command> commands = new HashMap<>();
     private final CollectionManager collectionManager = new CollectionManager();
 
     public CommandsList() {
@@ -25,13 +25,13 @@ public class CommandsList {
         commands.put("remove_greater", new RemoveGreater(collectionManager));
         commands.put("add_if_min", new AddIfMin(collectionManager));
         commands.put("save", new Save(collectionManager));
-        commands.put("help", new Help());
+        commands.put("help", new Help(commands));
         commands.put("exit", new Exit());
     }
 
     public void execute(String command) {
 
-        String commandCut[] = command.trim().split(" ");
+        String commandCut[] = command.trim().split("\s+");
         String commandName = commandCut[0];
         String args[] = Arrays.copyOfRange(commandCut, 1, commandCut.length);
 
