@@ -1,1 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><collection/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<collection>
+    <element>
+        <id>1</id>
+        <name>lol</name>
+        <real_hero>true</real_hero>
+        <has_toothpick>false</has_toothpick>
+        <impact_speed>1</impact_speed>
+        <minutes_of_waiting>1</minutes_of_waiting>
+        <car>a</car>
+        <soundtrack_name>1</soundtrack_name>
+        <weapon_type>BAT</weapon_type>
+        <coordinate_x>1.0</coordinate_x>
+        <coordinate_y>1.0</coordinate_y>
+        <creation_date>2022-04-14T00:56:59.039378700+03:00[Europe/Moscow]</creation_date>
+    </element>
+</collection>

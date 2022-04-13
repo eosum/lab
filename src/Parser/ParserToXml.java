@@ -43,9 +43,11 @@ public class ParserToXml {
             Document doc = builder.newDocument();
 
             Element elementCollection = doc.createElement(TAG_COLLECTION);
+            doc.appendChild(elementCollection);
 
             for(HumanBeing object: collection) {
                 Element element = doc.createElement(TAG_ELEMENT);
+                elementCollection.appendChild(element);
 
                 Element elementId = doc.createElement(TAG_ID);
                 elementId.appendChild(doc.createTextNode(object.getId().toString()));
@@ -96,25 +98,11 @@ public class ParserToXml {
                 element.appendChild(elementCreationDate);
             }
 
-            doc.appendChild(elementCollection);
-
             File file = new File("result.xml");
 
-            /*Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.transform(new DOMSource(doc), new StreamResult(file));*/
-
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource domSource = new DOMSource(doc);
-            StreamResult streamResult = new StreamResult(file);
-
-            // If you use
-            // StreamResult result = new StreamResult(System.out);
-            // the output will be pushed to the standard output ...
-            // You can use that for debugging
-
-            transformer.transform(domSource, streamResult);
+            transformer.transform(new DOMSource(doc), new StreamResult(file));
 
             System.out.println("Done creating XML File");
 
