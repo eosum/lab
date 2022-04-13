@@ -11,7 +11,7 @@ public class RemoveById implements Command {
     }
 
     @Override
-    public void execute(String args[]) {
+    public void execute(String args[], boolean fromFile) {
         try {
             final Long id = Long.parseLong(args[0]);
             if (!this.collectionManager.removeById(id)) {

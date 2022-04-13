@@ -11,7 +11,7 @@ public class Show implements Command {
     }
 
     @Override
-    public void execute(String args[]) {
+    public void execute(String args[], boolean fromFile) {
         collectionManager.show();
     }
 

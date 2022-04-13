@@ -10,7 +10,7 @@ public class Help implements Command {
     }
 
     @Override
-    public void execute(String args[]) {
+    public void execute(String args[], boolean fromFile) {
         for (Command description: commands.values()) {
             System.out.println(description.toString());
         }

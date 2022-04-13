@@ -10,7 +10,7 @@ public class FilterStartsWithSoundtrackName implements Command{
     }
 
     @Override
-    public void execute(String args[]) {
+    public void execute(String args[], boolean fromFile) {
         String SubString = String.join(" ", args);
         collectionManager.filterStartsWithSoundtrackName(SubString);
     }

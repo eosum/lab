@@ -1,19 +1,19 @@
 package App;
 
-import App.CommandsList;
-
-import java.util.Scanner;
+import Parser.ParserFromXml;
 
 public class Main {
 
     public static void main(String args[]) {
-        Scanner input = new Scanner(System.in);
+        /*Scanner input = new Scanner(System.in);
         CommandsList commandsList = new CommandsList();
 
-        while(true) {
+        while (true) {
             System.out.println("Введите команду");
             String command = input.nextLine();
-            commandsList.execute(command);
-        }
+            commandsList.execute(command, false);
+        }*/
+        ParserFromXml pars = new ParserFromXml();
+        pars.parser();
     }
 }

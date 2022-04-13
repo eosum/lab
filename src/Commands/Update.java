@@ -1,6 +1,7 @@
 package Commands;
 
 import App.CollectionManager;
+import InputInfo.ElementInput;
 
 public class Update implements Command {
     private final CollectionManager collectionManager;
@@ -9,7 +10,7 @@ public class Update implements Command {
         this.collectionManager = collectionManager;
     }
 
-    public void execute(String args[]) {
+    public void execute(String args[], boolean fromFile) {
         try {
             final Long id = Long.parseLong(args[0]);
             if (!this.collectionManager.updateById(id)) {

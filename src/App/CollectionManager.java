@@ -1,6 +1,7 @@
 package App;
 
 import Data.HumanBeing;
+import Parser.ParserToXml;
 
 import java.time.ZonedDateTime;
 import java.util.Collections;
@@ -10,6 +11,15 @@ public class CollectionManager {
     LinkedList<HumanBeing> collection = new LinkedList<>();
     private Long id = 1L;
     ZonedDateTime initTime = ZonedDateTime.now();
+
+    public Long getId() {
+        return id++;
+    }
+
+    public void save() {
+        ParserToXml parserToXml = new ParserToXml();
+        parserToXml.parseToXml(collection);
+    }
 
     public void info() {
         System.out.println("Тип - " + collection.getClass() + "\n"
@@ -68,10 +78,6 @@ public class CollectionManager {
         collection.clear();
     }
 
-    public Long getId() {
-        return id++;
-    }
-
     public void add(HumanBeing element) {
         collection.add(element);
     }
@@ -97,3 +103,4 @@ public class CollectionManager {
     }
 
 }
+

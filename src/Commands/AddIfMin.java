@@ -1,6 +1,7 @@
 package Commands;
 
 import App.CollectionManager;
+import InputInfo.ElementInput;
 
 public class AddIfMin implements Command{
     private final CollectionManager collectionManager;
@@ -10,7 +11,7 @@ public class AddIfMin implements Command{
     }
 
     @Override
-    public void execute(String args[]) {
+    public void execute(String args[], boolean fromFile) {
         ElementInput elementInput = new ElementInput();
         collectionManager.addIfMin(elementInput.resultElement(collectionManager.getId()));
     }

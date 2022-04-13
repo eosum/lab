@@ -11,7 +11,7 @@ public class CountLessThanWeaponType implements Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String[] args, boolean fromFile) {
         String weaponType = String.join(" ", args);
         try {
             WeaponType.valueOf(weaponType);

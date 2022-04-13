@@ -34,12 +34,52 @@ public class HumanBeing implements Comparable<HumanBeing>{
         creationDate = ZonedDateTime.now();
     }
 
+    public Float getCoordinateX() {
+        return coordinates.getX();
+    }
+
+    public Float getCoordinateY() {
+        return coordinates.getY();
+    }
+
+    public ZonedDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public Integer getMinutesOfWaiting() {
+        return minutesOfWaiting;
+    }
+
+    public Long getImpactSpeed() {
+        return impactSpeed;
+    }
+
+    public Boolean getHasToothpick() {
+        return hasToothpick;
+    }
+
     public Long getId() {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Boolean getRealHero() {
+        return realHero;
+    }
+
     public String getSoundtrackName() {
         return soundtrackName;
+    }
+
+    public void setCreationDate(ZonedDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     public String getWeaponType() {

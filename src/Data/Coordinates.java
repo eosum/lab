@@ -30,6 +30,14 @@ public class Coordinates {
         return max_y;
     }
 
+    public Float getX() {
+        return x;
+    }
+
+    public Float getY() {
+        return y;
+    }
+
     @Override
     public String toString() {
         return "x = " + x + ", y = " + y;
