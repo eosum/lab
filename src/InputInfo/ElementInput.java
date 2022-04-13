@@ -1,5 +1,6 @@
-package Commands;
+package InputInfo;
 
+import CheckCorrectData.CheckCorrectInput;
 import Data.*;
 
 import java.util.Scanner;
@@ -12,18 +13,19 @@ public class ElementInput {
     private WeaponType weaponType;
     private Float x;
     private Float y;
-    private Boolean isHero;
+    private Boolean realHero;
     private Boolean hasToothpick;
     private Long impactSpeed;
     private Integer minutesOfWaiting;
+    private CheckCorrectInput check = new CheckCorrectInput();
 
     public void nameInput() {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите имя: ");
-            name = input.nextLine();
-            if (name.trim().length() > 0) break;
-            System.out.println("Неправильный ввод. Строка должна быть не пустой!");
+            name = input.nextLine().trim();
+            if (check.checkName(name) == 1) break;
+            System.out.println("Некорректный ввод. Попробуйте еще раз.");
         }
     }
 
@@ -33,7 +35,7 @@ public class ElementInput {
             System.out.print("Введите координату x: ");
             if (input.hasNextFloat()) {
                 x = input.nextFloat();
-                if (Coordinates.checkValidX(x)) break;
+                if (check.checkCoordinateX(x) == 1) break;
             }
             System.out.println("Неверный формат ввода или число превышает " + Coordinates.getMaxX());
         }
@@ -45,19 +47,19 @@ public class ElementInput {
             System.out.print("Введите координату y: ");
             if (input.hasNextFloat()) {
                 y = input.nextFloat();
-                if (Coordinates.checkValidY(y)) break;
+                if (check.checkCoordinateY(y) == 1) break;
             }
             System.out.println("Неверный формат ввода или число превышает " + Coordinates.getMaxY());
         }
     }
 
-    public void isHeroInput() {
+    public void realHeroInput() {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Является героем: ");
             if (input.hasNextBoolean()) {
-                isHero = input.nextBoolean();
-                break;
+                realHero = input.nextBoolean();
+                if(check.checkRealHero(realHero) == 1) break;
             }
             System.out.println("Введите либо true либо false!");
         }
@@ -91,9 +93,8 @@ public class ElementInput {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите имя саундтрека: ");
-            soundtrack = input.nextLine();
-            if (soundtrack.trim().length() > 0) break;
-
+            soundtrack = input.nextLine().trim();
+            if (check.checkSoundtrackName(soundtrack) == 1) break;
             System.out.println("Неправильный ввод. Строка должна быть не пустой!");
         }
     }
@@ -116,12 +117,13 @@ public class ElementInput {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите тип оружия. Возможные варианты - ");
             WeaponType.outputWeaponType();
-            try {
-                weaponType = WeaponType.valueOf(input.nextLine());
+
+            if (check.checkWeaponType(input.nextLine().trim()) == 1) {
+                weaponType = WeaponType.valueOf(input.nextLine().trim());
                 break;
-            } catch (Exception e) {
-                System.out.println("Введите слово из предложенного списка!");
             }
+
+            System.out.println("Введите слово из предложенного списка.");
         }
     }
 
@@ -130,15 +132,16 @@ public class ElementInput {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите марку машины: ");
             if (input.hasNextLine()) {
-                car = input.nextLine();
-                break;
+                car = input.nextLine().trim();
+                if (check.checkCar(car) == 1) break;
             }
-            System.out.println("Ошибка!");
+
+            System.out.println("Некорректный ввод.");
         }
     }
 
     public HumanBeing createElement(Long id) {
-        return new HumanBeing(id, name, new Coordinates(x, y), isHero, hasToothpick, impactSpeed,
+        return new HumanBeing(id, name, new Coordinates(x, y), realHero, hasToothpick, impactSpeed,
                 soundtrack, minutesOfWaiting, weaponType, new Car(car));
     }
 
@@ -146,7 +149,7 @@ public class ElementInput {
         nameInput();
         xInput();
         yInput();
-        isHeroInput();
+        realHeroInput();
         hasToothpickInput();
         impactSpeedInput();
         minutesOfWaitingInput();

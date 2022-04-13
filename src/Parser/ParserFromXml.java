@@ -1,6 +1,6 @@
 package Parser;
 
-import Commands.CheckCorrectInput;
+import CheckCorrectData.CheckCorrectInput;
 import Data.Car;
 import Data.Coordinates;
 import Data.HumanBeing;

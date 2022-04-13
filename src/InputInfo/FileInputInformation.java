@@ -1,4 +1,4 @@
-package Commands;
+package InputInfo;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -25,7 +25,7 @@ public class FileInputInformation {
             }
 
             if (!file.exists()) {
-                System.out.println("А такого файла не существует. Проверьте ввод." + "\n");
+                System.out.println("Nакого файла не существует. Проверьте ввод." + "\n");
                 continue;
             }
 

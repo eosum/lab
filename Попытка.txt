@@ -6,7 +6,6 @@
             <coordinate_x>7</coordinate_x>
             <coordinate_y>7</coordinate_y>
             <real_hero>true</real_hero>
-            <has_toothpick>true</has_toothpick>
             <impact_speed>1</impact_speed>
             <soundtrack_name>lol</soundtrack_name>
             <minutes_of_waiting>1</minutes_of_waiting>

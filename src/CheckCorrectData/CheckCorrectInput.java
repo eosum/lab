@@ -1,4 +1,4 @@
-package Commands;
+package CheckCorrectData;
 
 import Data.Coordinates;
 import Data.WeaponType;
