@@ -25,7 +25,7 @@ public class FileInputInformation {
             }
 
             if (!file.exists()) {
-                System.out.println("Nакого файла не существует. Проверьте ввод." + "\n");
+                System.out.println("Такого файла не существует. Проверьте ввод." + "\n");
                 continue;
             }
 

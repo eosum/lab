@@ -14,8 +14,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.LinkedList;
 
 public class ParserToXml {
@@ -103,8 +101,6 @@ public class ParserToXml {
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.transform(new DOMSource(doc), new StreamResult(file));
-
-            System.out.println("Done creating XML File");
 
         }
         catch (ParserConfigurationException | TransformerException e) {

@@ -16,6 +16,10 @@ public class CollectionManager {
         return id++;
     }
 
+    public void mergeCollections(LinkedList<HumanBeing> collectionFromFile) {
+        collection.addAll(collectionFromFile);
+    }
+
     public void save() {
         ParserToXml parserToXml = new ParserToXml();
         parserToXml.parseToXml(collection);

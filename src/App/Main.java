@@ -2,18 +2,27 @@ package App;
 
 import Parser.ParserFromXml;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String args[]) {
-        /*Scanner input = new Scanner(System.in);
-        CommandsList commandsList = new CommandsList();
+
+        CollectionManager collectionManager = new CollectionManager();
+        CommandsList commandsList = new CommandsList(collectionManager);
+
+        if (args.length > 0) {
+            ParserFromXml parserFromXml = new ParserFromXml();
+            parserFromXml.parser();
+            collectionManager.mergeCollections(parserFromXml.getCollection());
+        }
+
+        Scanner input = new Scanner(System.in);
 
         while (true) {
             System.out.println("Введите команду");
             String command = input.nextLine();
             commandsList.execute(command, false);
-        }*/
-        ParserFromXml pars = new ParserFromXml();
-        pars.parser();
+        }
     }
 }

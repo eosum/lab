@@ -117,12 +117,12 @@ public class ElementInput {
             Scanner input = new Scanner(System.in);
             System.out.print("Введите тип оружия. Возможные варианты - ");
             WeaponType.outputWeaponType();
+            String inputWeaponType = input.nextLine().trim();
 
-            if (check.checkWeaponType(input.nextLine().trim()) == 1) {
-                weaponType = WeaponType.valueOf(input.nextLine().trim());
+            if (check.checkWeaponType(inputWeaponType)== 1) {
+                weaponType = WeaponType.valueOf(inputWeaponType);
                 break;
             }
-
             System.out.println("Введите слово из предложенного списка.");
         }
     }

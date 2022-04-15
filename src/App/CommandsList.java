@@ -10,9 +10,8 @@ import static java.lang.System.exit;
 
 public class CommandsList {
     public final HashMap<String, Command> commands = new HashMap<>();
-    private final CollectionManager collectionManager = new CollectionManager();
 
-    public CommandsList() {
+    public CommandsList(CollectionManager collectionManager) {
         commands.put("add", new Add(collectionManager));
         commands.put("info", new Info(collectionManager));
         commands.put("show", new Show(collectionManager));
@@ -41,7 +40,7 @@ public class CommandsList {
             commands.get(commandName).execute(args, fromFile);
         } else {
             if (fromFile) {
-                System.out.println("Некорректный файл, проверьте его. Остановка выполнения программы");
+                System.out.println("Некорректный файл, проверьте его. Остановка выполнения программы.");
                 exit(1);
             }
             System.out.println("Введите команду заново!");
